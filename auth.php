@@ -7,8 +7,8 @@ class User
 
     public function __construct($name, $password)
     {
-	$this->name = $name;
-	$this->password = $password;
+    	$this->name = $name;
+    	$this->password = $password;
     }
 
 }
@@ -16,11 +16,20 @@ class User
 
 class Auth
 {
+    protected $user;
+
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+
     public function auth()
     {
-	return $this->user;
+	   return $this->user;
     }
 }
 
-$user = new Auth(new User('Zaw Zaw', 'encrypted_password'));
+$user = new Auth(
+    new User('Zaw Zaw', 'encrypted_password')
+);
 $user->auth();	
